@@ -1,13 +1,10 @@
 services:
-  - name: youtube-downloader-backend
-    type: web
-    runtime: node
-    buildCommand: npm install && npm run build
-    startCommand: apt-get update && apt-get install -y python3 python3-pip && pip install yt-dlp && node dist/server.js
+  - type: web
+    name: youtube-downloader-api
+    env: node
+    plan: free
+    buildCommand: "apt-get update && apt-get install -y python3 python3-pip && npm install && npm run build"
+    startCommand: "pip install yt-dlp && node dist/server.js"
     envVars:
       - key: PORT
         value: 5000
-      - key: NODE_ENV
-        value: production
-      - key: NEXT_PUBLIC_BACKEND_URL
-        value: https://your-backend.onrender.com/api

@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "start": "apt-get update && apt-get install -y python3 python3-pip && pip install yt-dlp && node index.js",
-    "postinstall": "npm rebuild yt-dlp-exec"
+   
+    "postinstall": "npm rebuild yt-dlp-exec",
+      "preinstall": "apt-get update && apt-get install -y python3 python3-pip",
+  "start": "pip install yt-dlp && node dist/server.js"
   },
   "keywords": [],
   "author": "",
